@@ -15,7 +15,7 @@ export default function App() {
 		'Montserrat-Light': require('./assets/fonts/Montserrat-Light.ttf')
 	});
 
-	if (!fontsLoaded) return <AppLoading />;
+	// if (!fontsLoaded) return <AppLoading />;
 
 	return (
 		<NativeRouter>

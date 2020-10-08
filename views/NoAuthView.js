@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
-import { Switch, Route } from 'react-router-native';
+import { View, ScrollView } from 'react-native';
+import { Switch, Route, Redirect } from 'react-router-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import Login from '../screens/Login';
-import SignUp from '../screens/SignUp';
-import OnBoarding from './Onboarding';
+import SignUp from '../screens/Register';
+import ForgotPassword from '../screens/ForgotPassword';
+import OnBoarder from './Onboarding';
 
 export default function NoAuthView() {
 	const [onBoard, setOnBoard] = useState(false);
 
 	const checkOnboarded = async () => {
-		const hasOnboarded = await AsyncStorage.getItem('hasOnboarded');
-		if (hasOnboarded) setOnBoard(true);
+		// await AsyncStorage.removeItem('hasOnboarded');
+		const item = await AsyncStorage.getItem('hasOnboarded');
+		if (item) {
+			const { hasOnboarded } = JSON.parse(item);
+			console.log(hasOnboarded);
+			if (hasOnboarded) setOnBoard(true);
+		}
 	};
 
 	useEffect(() => {
 		checkOnboarded();
 		//eslint-disable-next-line
-	}, []);
+	}, [onBoard]);
 
 	return (
-		<View>
+		<View style={{ flex: 1 }}>
 			{onBoard ? (
 				<Switch>
 					<Route exact path="/login" component={Login} />
 					<Route exact path="/signup" component={SignUp} />
+					<Route exact path="/forgot-password" component={ForgotPassword} />
+					<Redirect to="/login" />
 				</Switch>
 			) : (
-				<OnBoarding />
+				<OnBoarder setOnBoard={setOnBoard} />
 			)}
 		</View>
 	);
