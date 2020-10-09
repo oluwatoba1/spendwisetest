@@ -98,19 +98,17 @@ export default function SignUp() {
 						/>
 					</View>
 
-					<View style={{ paddingTop: 10, paddingBottom: 10 }}>
+					<View style={{ padding: 5 }}>
 						<Text style={{ fontWeight: 'bold', fontSize: 14, paddingBottom: 5 }}>State</Text>
 						<View
 							style={{
-								height: 40,
-								borderWidth: 1,
-								borderColor: 'rgba(0, 0, 0, .3)',
-								borderRadius: 2,
-								elevation: 4,
-								shadowOffset: {
-									width: 5,
-									height: 5
-								}
+								height: 50,
+								backgroundColor: '#fff',
+								padding: 10,
+								justifyContent: 'center',
+								elevation: 2,
+								shadowOffset: { width: 2, height: 5 },
+								shadowColor: 'rgba(0, 0, 0, .3)'
 							}}>
 							<Picker mode="dropdown">
 								{states.map(state => (

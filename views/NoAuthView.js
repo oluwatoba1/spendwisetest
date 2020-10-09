@@ -14,9 +14,9 @@ export default function NoAuthView() {
 	const checkOnboarded = async () => {
 		// await AsyncStorage.removeItem('hasOnboarded');
 		const item = await AsyncStorage.getItem('hasOnboarded');
+		console.log(JSON.parse(item));
 		if (item) {
 			const { hasOnboarded } = JSON.parse(item);
-			console.log(hasOnboarded);
 			if (hasOnboarded) setOnBoard(true);
 		}
 	};

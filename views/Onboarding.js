@@ -142,13 +142,14 @@ export default function Onboarder({ setOnBoard }) {
 				onDone={onComplete}
 				skipLabel=""
 				nextLabel=""
+				containerStyles={{ marginTop: -100 }}
 				bottomBarHighlight={false}
 				DotComponent={Cylinder}
 				DoneButtonComponent={({ isLight }) => Done(isLight, history, setOnBoard)}
 			/>
 			<View
 				style={{
-					flex: 0.1,
+					flex: 0.2,
 					alignItems: 'center',
 					flexDirection: 'row',
 					justifyContent: 'space-around'
